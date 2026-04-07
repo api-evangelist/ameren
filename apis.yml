@@ -1,7 +1,11 @@
 aid: ameren
-url: https://raw.githubusercontent.com/api-evangelist/ameren/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/ameren/refs/heads/main/apis.yml
 modified: '2026-03-23'
 apis: []
 common:
   - type: Website
     url: https://www.ameren.com
+description: >-
+  Every day, Ameren is working hard to provide more reliable energy, reduce outages
+  and restore power faster than ever before.
