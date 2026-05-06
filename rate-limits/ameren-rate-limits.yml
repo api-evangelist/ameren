@@ -4,7 +4,8 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Ameren
 providerId: ameren
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Utility
   - Energy
@@ -14,83 +15,31 @@ tags:
   - Green Button
   - Renewable Energy
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Ameren API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: >-
+  Ameren / Aclara do not publish per-second or per-minute API rate limits for the Share My Usage / Green Button API. The program documents a 2-4 week third-party registration and testing window and a 24-month rolling data window for each authorized customer. Reconcile when specific throughput numbers are published.
+notes: >-
+  Ameren Illinois operates the Share My Usage / Green Button Connect My Data program (operated by data custodian Aclara) under the ESPI standard. Access for authorized third parties is governed by a registration and testing process rather than a metered, priced API. Rate limits are not publicly published; the program documents a 2-4 week onboarding and 24-month rolling data window. Reconcile if Ameren or Aclara publishes specific rate-limit or pricing values.
+sources:
+  - https://www.ameren.com/partners/account-and-data/share-my-usage
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Ameren Share My Usage API
-      - Ameren Renewables Portal API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Ameren Share My Usage API
-      - Ameren Renewables Portal API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Ameren Share My Usage API
-      - Ameren Renewables Portal API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Ameren Share My Usage API
-      - Ameren Renewables Portal API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
+  - name: Undocumented - bilateral agreement
     scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Ameren Share My Usage API
-      - Ameren Renewables Portal API
+    metric: varies
+    limit: 'see partner agreement; not publicly documented'
 policies:
+  - name: Documentation Status
+    description: >-
+      Ameren does not publish public per-second or per-minute API rate
+      limits. Throughput, concurrency, and burst behavior are governed by the
+      relevant partner, supplier, or merchant agreement.
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: >-
+      Where any HTTP API is exposed, clients should implement exponential
+      backoff with jitter and honor any Retry-After header returned on 429
+      or 503 responses.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
