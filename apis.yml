@@ -70,6 +70,10 @@ apis:
         url: https://anm.ameren.com/illinois/registration
 
 common:
+  - type: GitHubOrganization
+    url: https://github.com/AmerenCorp
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/ameren
   - type: Website
     url: https://www.ameren.com/
   - type: Portal
