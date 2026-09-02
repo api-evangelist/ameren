@@ -1,11 +1,11 @@
-generated: '2026-07-11'
+generated: '2026-09-02'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: www.ameren.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Oct  7 19:19:23 2026 GMT
+  cert_expires: Nov 10 20:59:13 2026 GMT
   hsts: true
   hsts_max_age: 31536000
 - host: api.ameren.com
@@ -13,19 +13,19 @@ hosts:
 - host: anm.ameren.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Oct  7 19:19:23 2026 GMT
+  cert_expires: Nov 10 20:59:13 2026 GMT
   hsts: true
   hsts_max_age: 31536000
 domains:
 - domain: ameren.com
   dnssec: false
   caa:
-  - 0 issue "globalsign.com"
-  - 128 issuevmc "digicert.com"
   - 0 issue "amazon.com"
   - 0 issue "amazonaws.com"
   - 0 issue "amazontrust.com"
   - 0 issue "awstrust.com"
+  - 0 issue "digicert.com"
+  - 0 issue "globalsign.com"
   spf: true
   dmarc: true
   dmarc_policy: reject

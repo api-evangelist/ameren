@@ -1,0 +1,63 @@
+generated: '2026-09-02'
+method: probed
+source: https://login.eiam.ece.ameren.com/am/oauth2/.well-known/openid-configuration
+provider: Ameren
+providerId: ameren
+description: >-
+  OAuth scopes advertised by Ameren's ForgeRock AM enterprise identity service, read
+  verbatim from the scopes_supported array of its live OIDC discovery document. These are
+  the identity-platform scopes; they are NOT a published Share My Usage / Green Button data
+  scope reference, which Ameren does not publish anywhere public.
+docs: null
+docs_note: >-
+  No scopes/permissions reference page exists on ameren.com. The Share My Usage program
+  page describes customer authorization in prose only. Searched
+  ameren.com/partners/account-and-data/share-my-usage and the third-party registration
+  guide PDF; neither enumerates scopes.
+scope_count: 9
+scopes:
+  - name: openid
+    description: Standard OpenID Connect scope; requests an ID token.
+    standard: true
+  - name: profile
+    description: Standard OIDC claim bundle — name, given_name, family_name, locale, zoneinfo.
+    standard: true
+  - name: email
+    description: Standard OIDC email claim.
+    standard: true
+  - name: address
+    description: Standard OIDC address claim.
+    standard: true
+  - name: phone
+    description: Standard OIDC phone_number claim.
+    standard: true
+  - name: write
+    description: >-
+      Non-standard write scope advertised by the AM instance. Its semantics are not
+      documented publicly by Ameren; recorded as advertised, not interpreted.
+    standard: false
+  - name: 'fr:idm:*'
+    description: >-
+      ForgeRock Identity Management wildcard scope — vendor-native, grants IDM API access.
+      Product default, not an Ameren-authored scope.
+    standard: false
+    vendor: ForgeRock
+  - name: am-introspect-all-tokens
+    description: >-
+      ForgeRock AM administrative scope permitting introspection of any token in the realm.
+      Product default.
+    standard: false
+    vendor: ForgeRock
+  - name: am-introspect-all-tokens-any-realm
+    description: >-
+      ForgeRock AM administrative scope permitting cross-realm token introspection.
+      Product default.
+    standard: false
+    vendor: ForgeRock
+evidence:
+  - url: https://login.eiam.ece.ameren.com/am/oauth2/.well-known/openid-configuration
+    status: 200
+    field: scopes_supported
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,75 @@
+generated: '2026-09-02'
+method: searched
+source: https://www.ameren.com/partners/account-and-data/share-my-usage
+provider: Ameren
+providerId: ameren
+description: >-
+  Lifecycle posture for Ameren's third-party data surface. Ameren publishes no API
+  versioning policy, no deprecation policy, no Sunset/Deprecation header commitment, no
+  SLA and no API status page. What it does publish is a program lifecycle — registration,
+  authorization term, and revocation — and that is recorded here.
+versioning_policy:
+  published: false
+  scheme: unknown
+  detail: >-
+    Searched the Share My Usage program page and the third-party registration guide PDF.
+    Neither names an ESPI/NAESB REQ.21 version, an API version, or a version negotiation
+    mechanism.
+deprecation_policy:
+  published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  detail: >-
+    No deprecation or sunset policy is published. No Deprecation pointer is emitted.
+sla:
+  published: false
+  detail: No availability or latency commitment is published for the data interface.
+status_page:
+  published: false
+  url: null
+  detail: >-
+    Ameren operates an OUTAGE CENTER (https://www.ameren.com/outages) for electric service
+    interruptions. That is a utility service map for customers, NOT an API/platform status
+    page, and it is deliberately not wired as a StatusPage pointer — doing so would credit
+    Ameren with an operational transparency surface for its API that it does not have.
+  probed:
+    - url: https://www.ameren.com/outages
+      status: 200
+      classification: electric service outage map, not API status
+changelog:
+  published: false
+  detail: >-
+    No dated API or developer changelog found on ameren.com, gp.ameren.com or
+    developer.ameren.com. No ChangeLog pointer is emitted.
+program_lifecycle:
+  - stage: Third-party registration
+    detail: >-
+      Two-phase application: Ameren Illinois reviews, then data custodian Aclara collects
+      technical information. Ameren states the whole process takes 2 to 4 weeks.
+    url: https://gp.ameren.com/third-party-registration/instructions
+  - stage: Registration term
+    detail: Ameren states registration does not expire once approved; it remains active unless discontinued.
+  - stage: Customer authorization term
+    detail: >-
+      Up to 24 months of historical usage data plus 24 months of forward data, unless the
+      customer revokes authorization before the 24-month expiration.
+  - stage: Revocation
+    detail: Customer-initiated at any time within the term. See conventions/ameren-conventions.yml reversibility.
+  - stage: Territory boundary
+    detail: >-
+      Illinois only. Ameren states Share My Usage is not currently available for Missouri
+      customers — a live scope limit an integrator must plan around.
+deprecated_operations: []
+deprecated_operations_note: No OpenAPI exists, so no deprecated operations can be derived.
+evidence:
+  - url: https://www.ameren.com/partners/account-and-data/share-my-usage
+    status: 200
+  - url: https://www.ameren.com/outages
+    status: 200
+  - url: https://developer.ameren.com/
+    status: 200
+    note: 302 to /s/ — Salesforce Experience Cloud community, no changelog readable anonymously
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

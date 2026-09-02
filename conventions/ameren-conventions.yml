@@ -1,0 +1,121 @@
+generated: '2026-09-02'
+method: derived
+source: >-
+  derived from well-known/ameren-openid-configuration.json (probed),
+  authentication/ameren-authentication.yml, and
+  https://www.ameren.com/partners/account-and-data/share-my-usage (searched)
+provider: Ameren
+providerId: ameren
+description: >-
+  Cross-cutting runtime semantics for Ameren's one third-party data interface, the Ameren
+  Illinois Share My Usage / Green Button Connect My Data program. Ameren publishes no
+  OpenAPI and no developer reference, so most dimensions below are honestly unknown rather
+  than absent — an agent cannot learn them without completing registration with Aclara.
+auth:
+  style: oauth2-authorization-code
+  detail: >-
+    Customer authorizes a registered third party from their Ameren Illinois online account;
+    the third party then retrieves ESPI XML. Ameren's enterprise identity service is
+    ForgeRock AM and advertises PKCE, PAR, mTLS client auth and DCR (see
+    conformance/ameren-conformance.yml). The Share My Usage OAuth endpoints themselves are
+    not published.
+  see: authentication/ameren-authentication.yml
+idempotency:
+  supported: unknown
+  status: na
+  detail: >-
+    Green Button Connect My Data is a read interface — the third party GETs usage
+    subscriptions and Atom-wrapped ESPI XML. There is no documented write surface, so
+    idempotency keys have nothing to protect. No Idempotency-Key header, retention window
+    or scope is documented anywhere. NO Idempotency pointer is emitted for this provider.
+dry_run_mode:
+  supported: na
+  detail: No write surface, and no sandbox or test mode is published.
+reversibility:
+  status: verified
+  grade_basis: >-
+    A reversal operation exists and Ameren states the window in its own words on the
+    program page.
+  write_surfaces:
+    - surface: Customer authorization of a third party (the only consequential act in the program)
+      actor: the Ameren Illinois customer, not the API client
+      forward_action: >-
+        Customer grants a registered third party access to their electric usage data from
+        their Ameren Illinois online account.
+      reversal_operation: Revoke authorization
+      operation_id: null
+      operation_id_note: >-
+        No operationId exists — Ameren publishes no OpenAPI. Revocation is performed in the
+        customer's online account, and the OIDC layer additionally exposes an RFC 7009
+        token revocation endpoint at
+        https://global.login.eiam.ameren.com/am/oauth2/token/revoke.
+      window: >-
+        The authorization runs for 24 months of forward data and can be revoked by the
+        customer at any time before that 24-month expiration.
+      window_source: https://www.ameren.com/partners/account-and-data/share-my-usage
+      window_quote: >-
+        "you will have access of up to 24-months of historical electric energy usage data
+        for that customer and then 24-future month's data unless authorization is revoked
+        prior to the 24 month expiration"
+      effect_of_reversal: >-
+        Forward data delivery stops. Ameren does not state whether data already delivered
+        to the third party must be deleted; the Terms and Conditions of Third Party Access
+        govern that and are not published as a machine-readable document. NOT ASSERTED.
+    - surface: Third-party program registration
+      forward_action: Register as an approved Share My Usage third party (2-4 week review).
+      reversal_operation: Discontinue registration
+      window: >-
+        Ameren states registration does not expire once approved and remains active unless
+        discontinued. No time-boxed reversal window is stated for the registration itself.
+      window_source: https://www.ameren.com/partners/account-and-data/share-my-usage
+  read_only_note: >-
+    Everything an integrator calls in this program is a read. The reversibility that
+    matters here belongs to the customer's consent grant, and that is exactly what is
+    documented.
+pagination:
+  style: unknown
+  detail: >-
+    Not documented publicly. The ESPI/Green Button profile conventionally uses Atom feeds
+    with published/updated bounds and a DownloadMyData batch resource, but Ameren publishes
+    no reference, so nothing is asserted.
+versioning:
+  style: path
+  detail: >-
+    The Green Button Connect profile Ameren cites carries its version in the resource path
+    (espi/1_1/resource/...). Ameren does not publish which ESPI/NAESB REQ.21 version its
+    implementation targets, and no version is stated on the program page.
+  asserted: false
+error_envelope:
+  format: unknown
+  detail: >-
+    No error reference published. No RFC 9457 problem+json claim. Nothing derivable — there
+    is no spec with 4xx/5xx responses, so errors/ is not written for this provider.
+rate_limit_signaling:
+  headers: []
+  detail: >-
+    No published limits and no documented response headers. See
+    rate-limits/ameren-rate-limits.yml, which records an honest zero.
+request_id_tracing:
+  supported: unknown
+  detail: No correlation/request-id header is documented.
+metadata_fields:
+  supported: unknown
+field_expansion:
+  supported: unknown
+content_negotiation:
+  formats:
+    - application/atom+xml
+  detail: >-
+    ESPI is an XML format carried in Atom, per Ameren's own description of the standard.
+    JSON is not mentioned.
+  asserted_from: https://www.ameren.com/partners/account-and-data/share-my-usage
+cross_links:
+  authentication: authentication/ameren-authentication.yml
+  scopes: scopes/ameren-scopes.yml
+  conformance: conformance/ameren-conformance.yml
+  lifecycle: lifecycle/ameren-lifecycle.yml
+  rate_limits: rate-limits/ameren-rate-limits.yml
+  well_known: well-known/ameren-well-known.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

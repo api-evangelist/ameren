@@ -1,0 +1,47 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  registry.npmjs.org search API, pypi.org, rubygems.org search API, and
+  https://api.github.com/orgs/AmerenCorp/repos
+provider: Ameren
+providerId: ameren
+description: >-
+  Ameren publishes no first-party client library on any package registry, and no
+  third-party library is close enough to first-party to record. This is an honest zero, not
+  an unchecked field. No SDKs pointer is emitted.
+package_count: 0
+packages: []
+searched:
+  - registry: npm
+    query: https://registry.npmjs.org/-/v1/search?text=ameren
+    status: 200
+    results: 0
+  - registry: pypi
+    query: https://pypi.org/pypi/ameren/json
+    status: 404
+    results: 0
+  - registry: rubygems
+    query: https://rubygems.org/api/v1/search.json?query=ameren
+    status: 200
+    results: 0
+  - registry: github
+    query: https://api.github.com/orgs/AmerenCorp/repos
+    status: 200
+    results: 0
+    note: >-
+      The github.com/AmerenCorp organization page exists and renders, but the org publishes
+      ZERO public repositories. The GitHubOrganization pointer in apis.yml is therefore a
+      live page with no code behind it.
+not_searched:
+  - Maven Central
+  - NuGet
+  - pkg.go.dev
+  - Packagist
+  - crates.io
+not_searched_reason: >-
+  Ameren publishes no SDK page, no developer reference and no public GitHub code, so there
+  is no first-party package name to look up in these registries. Recorded rather than
+  silently skipped.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

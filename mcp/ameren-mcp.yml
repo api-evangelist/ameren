@@ -1,0 +1,40 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  probes of /mcp, /.well-known/* and the docs hosts; no MCP server found. Recorded as an
+  absence, with NO MCPServer pointer wired into apis.yml.
+provider: Ameren
+providerId: ameren
+status: none
+description: >-
+  Ameren ships no Model Context Protocol server, hosted or local, and there is no OpenAPI
+  in this repo from which a candidate tool list could be honestly derived. This file exists
+  to record that the search ran and missed, so a later round does not repeat it blind.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+tools: []
+tools_note: >-
+  No tools are listed. Deriving candidate tools requires an OpenAPI with operations, and
+  Ameren publishes none — see well-known/ameren-well-known.yml for the full contract
+  discovery record. Inventing tool names here would assert an agent surface Ameren does not
+  have.
+evidence:
+  - url: https://anm.ameren.com/.well-known/ai-plugin.json
+    status: 200
+    note: MISS — HTML bot-challenge page, not a manifest
+  - url: https://gp.ameren.com/.well-known/ai-plugin.json
+    status: 200
+    note: MISS — HTML bot-challenge page
+  - url: https://www.ameren.com/.well-known/ai-plugin.json
+    status: 404
+  - url: https://registry.npmjs.org/-/v1/search?text=ameren
+    status: 200
+    note: 0 results — no @ameren/mcp or similar stdio package published
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

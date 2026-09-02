@@ -3,47 +3,44 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: Ameren
 providerId: ameren
+generated: '2026-09-02'
+method: searched
+source: https://www.ameren.com/partners/account-and-data/share-my-usage
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-09-02'
+reconciled: true
 tags:
   - Utility
   - Energy
   - Electric
-  - Natural Gas
-  - Smart Grid
   - Green Button
-  - Renewable Energy
 description: >-
-  Ameren's Share My Usage program provides authorized third parties access to up to 24 months of historical and 24 months of future ESPI-format energy usage data with customer consent. There is no published price list; access is governed by the Green Button Connect My Data registration process operated by data custodian Aclara. Reconcile when Ameren publishes a fee schedule.
-notes: >-
-  Ameren Illinois operates the Share My Usage / Green Button Connect My Data program (operated by data custodian Aclara) under the ESPI standard. Access for authorized third parties is governed by a registration and testing process rather than a metered, priced API. Rate limits are not publicly published; the program documents a 2-4 week onboarding and 24-month rolling data window. Reconcile if Ameren or Aclara publishes specific rate-limit or pricing values.
-sources:
-  - https://www.ameren.com/partners/account-and-data/share-my-usage
-plans:
-  - id: ameren-overview
-    name: Ameren - Pricing Overview
-    type: enterprise
-    description: >-
-      Placeholder plan reflecting that Ameren does not publish a public,
-      machine-readable API price list. Pricing is bespoke per engagement.
-    entries:
-      - label: API Access
-        name: api_access
-        type: flat
-        metric: varies
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: contact sales
-        userMultiplied: false
-    elements:
-      - name: Negotiated Access
-      - name: Bilateral Agreement
+  Ameren publishes no plans, no tiers and no price list for its Share My Usage / Green
+  Button Connect My Data program, and no pricing page exists for any third-party data
+  interface. Access is granted through a registration and review process operated with
+  data custodian Aclara, under the Illinois Commerce Commission tariff framework, not sold
+  as a product. This is an honest zero: searched, nothing to record.
+plan_count: 0
+plans: []
+searched:
+  - url: https://www.ameren.com/partners/account-and-data/share-my-usage
+    status: 200
+    finding: >-
+      Describes registration, the 2-4 week review, the 24-month data window and the
+      custodian relationship. No fee, no tier, no rate card, no "contact sales" pricing
+      page.
+  - url: https://gp.ameren.com/third-party-registration/instructions
+    status: 200
+    finding: Angular SPA behind an Imperva bot challenge; no pricing content readable anonymously.
+  - url: https://www.ameren.com/-/media/files/resources-and-support/account-and-data/share-usage/third-party-share-my-usage-registration-guide-2019.ashx
+    status: 200
+    finding: >-
+      PDF registration form (contact information and submission steps only). Text was
+      extracted and contains no fee schedule.
+note: >-
+  Supersedes the 2026-05-04 bulk-sweep scaffold, which asserted a placeholder
+  "contact sales" enterprise plan that Ameren does not actually publish. Replaced with a
+  probed zero. Reconcile if Ameren or Aclara ever publishes a fee schedule.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

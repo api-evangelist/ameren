@@ -46,7 +46,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/ameren/refs/heads/main/apis.yml
 created: '2026-03-23'
-modified: '2026-04-19'
+modified: '2026-09-02'
 specificationVersion: '0.23'
 apis:
   - aid: ameren:share-my-usage-api
@@ -59,7 +59,12 @@ apis:
       standard. Authentication uses OAuth with customer authorization via
       Ameren Illinois online accounts. Operated by data custodian Aclara.
     humanURL: https://www.ameren.com/partners/account-and-data/share-my-usage
-    baseURL: https://api.ameren.com
+    # baseURL removed 2026-09-02: https://api.ameren.com does not exist. It returns
+    # NXDOMAIN from the local resolver and from 8.8.8.8, and curl cannot connect.
+    # It was a guess from the domain, not a documented base. Ameren does not publish
+    # the Share My Usage / ESPI base URL anywhere public; Aclara supplies it to an
+    # approved third party during registration. Recorded honestly as missing rather
+    # than replaced with another guess. See well-known/ameren-well-known.yml.
     tags:
       - Green Button
       - Energy Data
@@ -70,7 +75,21 @@ apis:
       - type: Documentation
         url: https://www.ameren.com/partners/account-and-data/share-my-usage
       - type: Authentication
-        url: https://www.ameren.com/partners/account-and-data/share-my-usage
+        url: authentication/ameren-authentication.yml
+      - type: OAuthScopes
+        url: scopes/ameren-scopes.yml
+      - type: GettingStarted
+        url: https://gp.ameren.com/third-party-registration/instructions
+      - type: Conventions
+        url: conventions/ameren-conventions.yml
+      - type: Lifecycle
+        url: lifecycle/ameren-lifecycle.yml
+      - type: Conformance
+        url: conformance/ameren-conformance.yml
+      - type: Plans
+        url: plans/ameren-plans-pricing.yml
+      - type: RateLimits
+        url: rate-limits/ameren-rate-limits.yml
 
   - aid: ameren:renewables-portal-api
     name: Ameren Renewables Portal API
@@ -100,6 +119,44 @@ common:
     url: security/ameren-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/AmerenCorp
+  - type: WellKnown
+    url: well-known/ameren-well-known.yml
+  - type: SecurityTxt
+    url: well-known/ameren-security.txt
+  - type: Security
+    url: security/ameren-vulnerability-disclosure.yml
+  - type: Authentication
+    url: authentication/ameren-authentication.yml
+  - type: OAuthScopes
+    url: scopes/ameren-scopes.yml
+  - type: Conformance
+    url: conformance/ameren-conformance.yml
+  - type: Conventions
+    url: conventions/ameren-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/ameren-lifecycle.yml
+  - type: Packages
+    url: packages/ameren-packages.yml
+  - type: LLMsTxt
+    url: llms/ameren-llms.txt
+  - type: Plans
+    url: plans/ameren-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/ameren-rate-limits.yml
+  - type: FinOps
+    url: finops/ameren-finops.yml
+  - type: Documentation
+    url: https://www.ameren.com/partners/account-and-data/share-my-usage
+  - type: Support
+    url: https://www.ameren.com/customer-service
+  - type: TermsOfService
+    url: https://www.ameren.com/terms
+  - type: PrivacyPolicy
+    url: https://www.ameren.com/privacy
+  - type: SignUp
+    url: https://gp.ameren.com/third-party-registration/instructions
+  - type: Login
+    url: https://login.eiam.ece.ameren.com/am/XUI/
   - type: LinkedIn
     url: https://www.linkedin.com/company/ameren
   - type: Website
@@ -166,3 +223,9 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+
+x-enrichment:
+  date: '2026-09-02'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1

@@ -3,46 +3,57 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Ameren
 providerId: ameren
+generated: '2026-09-02'
+method: searched
+source: https://www.ameren.com/partners/account-and-data/share-my-usage
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-09-02'
+reconciled: true
 tags:
   - Utility
   - Energy
-  - Electric
-  - Natural Gas
-  - Smart Grid
   - Green Button
-  - Renewable Energy
   - Rate Limiting
 description: >-
-  Ameren / Aclara do not publish per-second or per-minute API rate limits for the Share My Usage / Green Button API. The program documents a 2-4 week third-party registration and testing window and a 24-month rolling data window for each authorized customer. Reconcile when specific throughput numbers are published.
-notes: >-
-  Ameren Illinois operates the Share My Usage / Green Button Connect My Data program (operated by data custodian Aclara) under the ESPI standard. Access for authorized third parties is governed by a registration and testing process rather than a metered, priced API. Rate limits are not publicly published; the program documents a 2-4 week onboarding and 24-month rolling data window. Reconcile if Ameren or Aclara publishes specific rate-limit or pricing values.
-sources:
-  - https://www.ameren.com/partners/account-and-data/share-my-usage
-responseCodes:
-  throttled: 429
-  serviceUnavailable: 503
-limits:
-  - name: Undocumented - bilateral agreement
-    scope: contract
-    metric: varies
-    limit: 'see partner agreement; not publicly documented'
-policies:
-  - name: Documentation Status
-    description: >-
-      Ameren does not publish public per-second or per-minute API rate
-      limits. Throughput, concurrency, and burst behavior are governed by the
-      relevant partner, supplier, or merchant agreement.
-  - name: Backoff Strategy
-    description: >-
-      Where any HTTP API is exposed, clients should implement exponential
-      backoff with jitter and honor any Retry-After header returned on 429
-      or 503 responses.
+  Ameren and its data custodian Aclara publish no rate limits, no quotas, no burst
+  allowances and no rate-limit response headers for the Share My Usage / Green Button
+  Connect My Data program. No developer reference exists in which limits could be stated.
+  This is an honest zero: searched, nothing published.
+limit_count: 0
+limits: []
+headers: []
+headers_note: >-
+  No X-RateLimit-*, RateLimit-* or Retry-After behaviour is documented, and none could be
+  observed live — there is no anonymously callable endpoint on which to observe a response.
+  Nothing is asserted.
+response_codes:
+  throttled: null
+  service_unavailable: null
+  note: >-
+    The prior version of this file asserted 429 and 503. Ameren documents neither; those
+    values were a scaffold default and have been removed rather than left standing as a
+    claim about Ameren's behaviour.
+searched:
+  - url: https://www.ameren.com/partners/account-and-data/share-my-usage
+    status: 200
+    finding: No throughput, concurrency or quota figures. Documents onboarding time and data window only.
+  - url: https://gp.ameren.com/third-party-registration/instructions
+    status: 200
+    finding: Angular SPA behind an Imperva bot challenge; nothing readable anonymously.
+documented_constraints:
+  - name: Data window
+    detail: Up to 24 months historical plus 24 months forward electric usage data per authorized customer.
+    source: https://www.ameren.com/partners/account-and-data/share-my-usage
+    note: A data-scope limit, not a rate limit. Recorded here so it is not mistaken for one.
+  - name: Onboarding time
+    detail: 2 to 4 weeks for third-party registration and technical verification with Aclara.
+    source: https://www.ameren.com/partners/account-and-data/share-my-usage
+  - name: Territory
+    detail: Illinois only; Share My Usage is not available for Missouri customers.
+    source: https://www.ameren.com/partners/account-and-data/share-my-usage
+note: >-
+  Supersedes the 2026-05-04 bulk-sweep scaffold, which carried one fabricated limits[] row
+  ("see partner agreement") and scaffold-default 429/503 codes. Replaced with a probed zero.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

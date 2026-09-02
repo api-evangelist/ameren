@@ -1,0 +1,184 @@
+generated: '2026-09-02'
+method: probed
+source: live GET probes of /.well-known/* on every apis.yml host, the docs host, and the
+  Ameren identity host discovered from the Renewables Portal page
+provider: Ameren
+providerId: ameren
+note: >-
+  Two real documents were served. (1) An RFC 9116 security.txt is published on every
+  reachable Ameren web host (www, anm, gp); on www.ameren.com the /.well-known/ path 302s
+  to https://www.ameren.com/-/media/security.txt, which returns the document as
+  text/plain. It is PAST ITS OWN Expires date (2026-08-09) as of this probe. (2) A live,
+  anonymous OpenID Connect discovery document is served by Ameren's ForgeRock AM identity
+  service at https://login.eiam.ece.ameren.com/am/oauth2/.well-known/openid-configuration
+  — note the non-standard AM-prefixed path; the RFC 8414 root path /.well-known/openid-configuration
+  404s on that host. CAUTION recorded honestly: the discovery document advertises its
+  issuer and every endpoint on https://global.login.eiam.ameren.com/, a hostname that does
+  NOT resolve from the public internet (curl exit 6 / no DNS answer), so the advertised
+  endpoints are not publicly reachable even though the discovery document is.
+  Every other probed path missed. anm.ameren.com and gp.ameren.com are Angular SPAs behind
+  an Imperva bot challenge that answer HTTP 200 with an HTML shell ("Pardon Our
+  Interruption") for EVERY path including /.well-known/notexist-xyz — a control probe was
+  run to confirm this, so their 200s are recorded as misses, not documents.
+hosts:
+  - host: www.ameren.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: ameren-security.txt
+        note: >-
+          302 redirect to https://www.ameren.com/-/media/security.txt; final response is
+          text/plain RFC 9116. Expires field 2026-08-09T07:01:00.000Z is in the past.
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+      - path: /openapi.json
+        status: 404
+  - host: login.eiam.ece.ameren.com
+    documents:
+      - path: /am/oauth2/.well-known/openid-configuration
+        status: 200
+        file: ameren-openid-configuration.json
+        note: >-
+          Real OIDC discovery document, application/json, 53 keys, issuer
+          https://global.login.eiam.ameren.com/am/oauth2. Non-standard path — ForgeRock AM
+          serves discovery under /am/oauth2/, not at the RFC 8414 root.
+      - path: /am/oauth2/realms/root/.well-known/openid-configuration
+        status: 200
+        note: same document, realm-qualified path
+      - path: /am/oauth2/connect/jwk_uri
+        status: 200
+        note: live JWKS, RSA signing keys (not saved — key material, refetch on demand)
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404
+  - host: anm.ameren.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: ameren-security.txt
+        note: identical byte-for-byte to the www copy; served text/plain
+      - path: /.well-known/openid-configuration
+        status: 200
+        note: MISS — HTML SPA shell, not a document (see control probe)
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        note: MISS — HTML SPA shell
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        note: MISS — HTML SPA shell
+      - path: /.well-known/api-catalog
+        status: 200
+        note: MISS — HTML bot-challenge page
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        note: MISS — HTML bot-challenge page
+      - path: /.well-known/agent-card.json
+        status: 200
+        note: MISS — HTML bot-challenge page, not an AgentCard JSON object
+      - path: /.well-known/agent.json
+        status: 200
+        note: MISS — HTML bot-challenge page
+      - path: /.well-known/notexist-xyz
+        status: 200
+        note: CONTROL PROBE — proves every 200 above is a catch-all, not a document
+      - path: /llms.txt
+        status: 200
+        note: MISS — Angular index.html shell
+      - path: /openapi.json
+        status: 200
+        note: MISS — Angular index.html shell, no openapi/paths keys
+      - path: /swagger.json
+        status: 200
+        note: MISS — HTML shell
+  - host: gp.ameren.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: ameren-security.txt
+        note: identical byte-for-byte to the www copy; served text/plain
+      - path: /.well-known/openid-configuration
+        status: 200
+        note: MISS — Angular index.html shell
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        note: MISS — Angular index.html shell
+      - path: /.well-known/api-catalog
+        status: 200
+        note: MISS — Angular index.html shell
+      - path: /.well-known/agent-card.json
+        status: 200
+        note: MISS — HTML bot-challenge page
+      - path: /.well-known/agent.json
+        status: 200
+        note: MISS — HTML bot-challenge page
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        note: MISS — HTML bot-challenge page
+      - path: /.well-known/notexist-xyz
+        status: 200
+        note: CONTROL PROBE — proves the 200s above are a catch-all
+      - path: /llms.txt
+        status: 200
+        note: MISS — Angular index.html shell
+      - path: /openapi.json
+        status: 200
+        note: MISS — HTML bot-challenge page
+      - path: /DataCustodian/espi/1_1/resource/ApplicationInformation
+        status: 200
+        note: >-
+          MISS — probed the canonical Green Button Connect / ESPI DataCustodian resource
+          path; returned the HTML bot-challenge page, not an ESPI Atom feed
+  - host: developer.ameren.com
+    documents:
+      - path: /
+        status: 200
+        note: >-
+          302 to /s/ — a Salesforce Experience Cloud (Siteforce) community, JS-rendered,
+          no readable content anonymously
+      - path: /.well-known/security.txt
+        status: 401
+      - path: /.well-known/agent-card.json
+        status: 401
+      - path: /openapi.json
+        status: 401
+      - path: /swagger.json
+        status: 401
+      - path: /llms.txt
+        status: 401
+      - path: /api-docs
+        status: 404
+  - host: api.ameren.com
+    documents:
+      - path: /openapi.json
+        status: 0
+        note: >-
+          HOST DOES NOT EXIST. api.ameren.com returns no DNS answer from the local resolver
+          or from 8.8.8.8 (NXDOMAIN); curl fails to connect (exit 6). This was the baseURL
+          recorded on the Share My Usage API entry in apis.yml and has been removed as an
+          unsupportable claim.
+      - path: /swagger.json
+        status: 0
+        note: NXDOMAIN
+      - path: /
+        status: 0
+        note: NXDOMAIN
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
