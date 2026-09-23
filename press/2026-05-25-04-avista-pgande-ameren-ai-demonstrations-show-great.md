@@ -1,7 +1,9 @@
 ---
 title: Avista, PG&E, Ameren AI demonstrations show great ...
 url: https://www.utilitydive.com/news/avista-pge-ameren-ai-utilities-modeling/740705/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Ameren" press release artificial intelligence'
 position: 4
 source: serpapi-google

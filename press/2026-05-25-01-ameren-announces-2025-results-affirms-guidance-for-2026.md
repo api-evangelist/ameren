@@ -1,7 +1,9 @@
 ---
 title: Ameren Announces 2025 Results, Affirms Guidance for 2026 ...
 url: https://www.amereninvestors.com/investors/financial-releases/financial-releases-details/2026/Ameren-Announces-2025-Results-Affirms-Guidance-for-2026-Earnings-and-Issues-Long-Term-Growth-Guidance/default.aspx
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Ameren" press release artificial intelligence'
 position: 1
 source: serpapi-google

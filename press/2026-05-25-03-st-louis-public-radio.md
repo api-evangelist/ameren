@@ -1,7 +1,9 @@
 ---
 title: St. Louis Public Radio
 url: https://www.facebook.com/stlpublicradio/posts/multiple-large-data-centers-have-signed-binding-electric-agreements-with-ameren-/1480897600709260/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Ameren" press release artificial intelligence'
 position: 3
 source: serpapi-google

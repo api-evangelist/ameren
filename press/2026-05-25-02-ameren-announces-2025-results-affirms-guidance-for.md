@@ -1,7 +1,9 @@
 ---
 title: Ameren Announces 2025 Results, Affirms Guidance for ...
 url: https://www.prnewswire.com/news-releases/ameren-announces-2025-results-affirms-guidance-for-2026-earnings-and-issues-long-term-growth-guidance-302685673.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Ameren" press release artificial intelligence'
 position: 2
 source: serpapi-google
