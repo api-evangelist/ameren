@@ -1,0 +1,33 @@
+edges:
+- partner_name: Arcadia
+  partner: arcadia-power
+  channel: partner-built
+  direction: partner-built
+  operations:
+  - statements
+  - statement-history
+  - web-navigation
+  - intervals
+  - interval-history
+  - instant-intervals
+  contract_reference:
+    list: Arcadia Plug provider coverage (public list)
+    spec_file: null
+    listed_name: Ameren Missouri
+    listed_id: prv_1ed03941-3b5f-dc16-b7b8-c68e7db0619d
+    matched_domain: ameren.com
+    service_types:
+    - Lighting
+    - Electric
+    - Natural Gas
+    detected_by: sweep-energy.py
+    detected: '2026-10-13'
+  type: coverage
+  relationship: system-coverage
+  evidence: https://api.arcadia.com/plug/providers/public
+  detected_by: sweep-energy.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched
+checked:
+- https://api.arcadia.com/plug/providers/public
