@@ -1,4 +1,4 @@
-# Ameren (ameren)
+# Ameren
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,87 +64,116 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Ameren Corporation is a regulated electric and natural gas utility serving customers in Missouri and Illinois. The company provides reliable energy delivery, smart grid infrastructure, and renewable energy programs. Ameren Illinois implements the Green Button Connect My Data program (Share My Usage) based on the ESPI standard, enabling authorized third parties to access customer energy usage data.
+Ameren Corporation is a regulated electric and natural gas utility serving customers in Missouri and Illinois. The company provides reliable energy delivery, smart grid infrastructure, and renewable energy programs. Ameren Illinois implements the Green Button Connect My Data program (Share My Usage) based on the ESPI standard, enabling authorized third parties to access customer energy usage data. Ameren also operates a Renewables Portal for community solar generation owners and participates in grid modernization initiatives.
 
-**URL:** [https://www.ameren.com/](https://www.ameren.com/)
+**Areas:** Utility · Energy · Electric · Natural Gas · Smart Grid · Green Button · Renewable Energy · Fortune 500
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Ameren on APIs.io
 
-## Tags
+Everything profiled for Ameren is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ameren/](https://apis.io/providers/ameren/)** — or go straight to one of the APIs or properties below.
 
- - Utility, Energy, Electric, Natural Gas, Smart Grid, Green Button, Renewable Energy
+### APIs (2)
 
-## Timestamps
+- [Ameren Share My Usage API](https://apis.io/apis/ameren/share-my-usage-api/) — The Ameren Illinois Share My Usage API implements the Green Button Connect My Data program, providing authorized third parties access to up to 24 months of…
+- [Ameren Renewables Portal API](https://apis.io/apis/ameren/renewables-portal-api/) — The Ameren Renewables Portal enables generation owners to manage community solar and collectively owned generation facilities, track subscriber accounts,…
 
-- **Created:** 2026-03-23
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Ameren Share My Usage API
+#### Security (3)
 
-The Ameren Illinois Share My Usage API implements the Green Button Connect My Data program, providing authorized third parties access to up to 24 months of historical electric energy usage data via the ESPI standard.
+Authentication, trust centre, and vulnerability disclosure.
 
-**Human URL:** [https://www.ameren.com/partners/account-and-data/share-my-usage](https://www.ameren.com/partners/account-and-data/share-my-usage)
+- [Ameren Authentication](https://apis.io/security/ameren/ameren-authentication/)
+- [Ameren Domain Security](https://apis.io/security/ameren/ameren-domain-security/)
+- [Ameren Vulnerability Disclosure](https://apis.io/security/ameren/ameren-vulnerability-disclosure/)
 
-#### Tags
+#### OAuth scopes (1)
 
- - Green Button, Energy Data, ESPI, Smart Meter, Data Sharing
+The permissions the API asks for.
 
-#### Properties
+- [Ameren Scopes](https://apis.io/scopes/ameren/ameren-scopes/)
 
-- [Documentation](https://www.ameren.com/partners/account-and-data/share-my-usage)
-- [Authentication](https://www.ameren.com/partners/account-and-data/share-my-usage)
+#### Plans and pricing (1)
 
-### Ameren Renewables Portal API
+Published plans, tiers and prices.
 
-The Ameren Renewables Portal enables generation owners to manage community solar and collectively owned generation facilities, track subscriber accounts, and manage billing usage credits in Illinois.
+- [Ameren Plans Pricing](https://apis.io/plans/ameren/ameren-plans-pricing/)
 
-**Human URL:** [https://www.ameren.com/service/renewables/developers/renewables-portal](https://www.ameren.com/service/renewables/developers/renewables-portal)
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
- - Renewable Energy, Community Solar, Generation Management, Illinois
+- [Ameren Rate Limits](https://apis.io/rate-limits/ameren/ameren-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://www.ameren.com/service/renewables/developers/renewables-portal)
-- [Portal](https://anm.ameren.com/illinois/registration)
+What the API costs to run, by operation.
 
-## Common Properties
+- [Ameren Finops](https://apis.io/finops/ameren/ameren-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.ameren.com/)
-- [Portal](https://www.ameren.com/partners/account-and-data/share-my-usage)
+- [Documentation](https://www.ameren.com/partners/account-and-data/share-my-usage)
+- [Sign up](https://gp.ameren.com/third-party-registration/instructions)
+- [Support](https://www.ameren.com/customer-service)
+- [Terms of service](https://www.ameren.com/terms)
+- [Privacy policy](https://www.ameren.com/privacy)
+- [GitHub](https://github.com/AmerenCorp)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Green Button Connect My Data | Standard-based program enabling authorized third parties to access customer electric energy usage data with OAuth customer authorization. |
-| Smart Meter Infrastructure | Advanced smart meter deployment enabling two-way communication and real-time usage monitoring. |
-| Community Solar Renewables Portal | Online portal for community solar and generation owners to manage subscriber accounts and billing credits in Illinois. |
-| Outage Management and Restoration | Advanced outage detection, automated notification, and faster power restoration capabilities. |
-| Energy Efficiency Programs | Rebates and incentive programs for residential and business customers. |
+**Kin Score 26.9** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 27.6 |
 
-| Name | Description |
-|------|-------------|
-| Energy Usage Data Analysis | Authorized third parties access up to 24 months of customer energy usage data for efficiency analysis, billing comparisons, and research. |
-| Community Solar Management | Generation owners manage community solar subscriber accounts and billing credits. |
-| Smart Home Integration | Third-party apps integrate with Ameren usage data via Green Button for energy management. |
-| Retail Electric Supply Comparison | Retail electric suppliers access usage data to provide competitive supply options. |
+**Agent readiness 17.6** — agent-aware
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| Green Button Alliance | Ameren Illinois participates in the national Green Button initiative for standardized energy data access. |
-| Aclara | Aclara serves as Ameren Illinois's authorized data custodian for the Share My Usage program. |
-| ESPI Standard | Energy Services Provider Interface standard from NAESB for energy usage data exchange. |
+**Regulatory alignment 39.3** — Energy & Utilities
 
-## Maintainers
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ameren/](https://apis.io/providers/ameren/).
 
-**FN:** Kin Lane
+## How this profile is made
 
-**Email:** kin@apievangelist.com
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Ameren: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ameren/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
